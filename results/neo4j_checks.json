@@ -1,0 +1,67 @@
+{
+  "Customer nodes (228,000)": [
+    [
+      0
+    ]
+  ],
+  "Account nodes (248,000)": [
+    [
+      0
+    ]
+  ],
+  "Device nodes (228,600)": [
+    [
+      0
+    ]
+  ],
+  "All nodes (704,600)": [
+    [
+      0
+    ]
+  ],
+  "OWNS (248,000)": [
+    [
+      0
+    ]
+  ],
+  "USED_DEVICE (285,600)": [
+    [
+      0
+    ]
+  ],
+  "TRANSFER (20,003,300)": [
+    [
+      0
+    ]
+  ],
+  "All relationships (20,536,900)": [
+    [
+      0
+    ]
+  ],
+  "Account roles": [],
+  "Accounts without exactly one owner (0)": [
+    [
+      0
+    ]
+  ],
+  "Transfers vs distinct transfer_id": [
+    [
+      0,
+      0
+    ]
+  ],
+  "Transfer audit (count, earliest, latest, sum)": [
+    [
+      0,
+      null,
+      null,
+      0
+    ]
+  ],
+  "Property types sample": [],
+  "sizes": {
+    "store_gb": 0.0,
+    "transaction_log_gb": 0.0
+  }
+}

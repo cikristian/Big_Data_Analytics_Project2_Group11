@@ -1,0 +1,56 @@
+{
+  "customers": {
+    "consumed": 228000,
+    "written": 228000,
+    "expected": 228000,
+    "match": true,
+    "seconds": 0.84,
+    "csv_bytes": 3581915,
+    "csv_gb": 0.0036
+  },
+  "accounts": {
+    "consumed": 248000,
+    "written": 248000,
+    "expected": 248000,
+    "match": true,
+    "seconds": 0.77,
+    "csv_bytes": 5212713,
+    "csv_gb": 0.0052
+  },
+  "devices": {
+    "consumed": 228600,
+    "written": 228600,
+    "expected": 228600,
+    "match": true,
+    "seconds": 0.54,
+    "csv_bytes": 3554518,
+    "csv_gb": 0.0036
+  },
+  "account_devices": {
+    "consumed": 285600,
+    "written": 285600,
+    "expected": 285600,
+    "match": true,
+    "seconds": 1.08,
+    "csv_bytes": 6284489,
+    "csv_gb": 0.0063
+  },
+  "transfers": {
+    "consumed": 20003300,
+    "written": 20003300,
+    "expected": 20003300,
+    "match": true,
+    "seconds": 144.71,
+    "csv_bytes": 780197845,
+    "csv_gb": 0.7802
+  },
+  "transfer_audit": {
+    "count": 20003300,
+    "min_occurred_at": 1788235200,
+    "max_occurred_at": 1790798399,
+    "sum_amount_rwf": 231482327870
+  },
+  "total_rows": 20993500,
+  "total_seconds": 147.96,
+  "total_csv_gb": 0.7988
+}
