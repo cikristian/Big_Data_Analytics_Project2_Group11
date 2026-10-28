@@ -1,0 +1,174 @@
+customers.csv        228,000 rows  header: customer_id:ID(Customer),region:string
+accounts.csv         248,000 rows  header: account_id:ID(Account),:IGNORE,role:string
+devices.csv          228,600 rows  header: device_id:ID(Device),access_type:string
+used_device.csv      285,600 rows  header: :START_ID(Account),:END_ID(Device),first_day:int,last_day:int,observations:int
+transfers.csv     20,003,300 rows  header: transfer_id:long,:START_ID(Account),:END_ID(Account),occurred_at:long,amount_rwf:int
+owns.csv             248,000 rows  header: :START_ID(Customer),:END_ID(Account)
+Prepared import copies in 32.1 s -> C:\mm_work\data\import
+
+Import command (Neo4j stopped):
+C:\neo4j\neo4j-community-2026.09.0\bin\neo4j-admin.bat database import full neo4j --overwrite-destination=true --id-type=integer --nodes=Customer=C:\mm_work\data\import\customers.csv --nodes=Account=C:\mm_work\data\import\accounts.csv --nodes=Device=C:\mm_work\data\import\devices.csv --relationships=OWNS=C:\mm_work\data\import\owns.csv --relationships=USED_DEVICE=C:\mm_work\data\import\used_device.csv --relationships=TRANSFER=C:\mm_work\data\import\transfers.csv
+Running: C:\neo4j\neo4j-community-2026.09.0\bin\neo4j-admin.bat database import full neo4j --overwrite-destination=true --id-type=integer --nodes=Customer=C:\mm_work\data\import\customers.csv --nodes=Account=C:\mm_work\data\import\accounts.csv --nodes=Device=C:\mm_work\data\import\devices.csv --relationships=OWNS=C:\mm_work\data\import\owns.csv --relationships=USED_DEVICE=C:\mm_work\data\import\used_device.csv --relationships=TRANSFER=C:\mm_work\data\import\transfers.csv
+WARNING: Using incubator modules: jdk.incubator.vector
+Starting to import, the following output will be saved in the directory: C:\neo4j\neo4j-community-2026.09.0\logs\neo4j-admin-import-2026-10-28.18.48.46
+  Logging information: import.log
+  Detailed progress reporting (JSON formatted): progress.json.log
+  Import data errors / violations (JSON formatted): report.json.log
+
+NOTE this directory will be cleared on the completion of a successful import.
+
+Neo4j version: 2026.09.0
+Importing the contents of these files into C:\neo4j\neo4j-community-2026.09.0\data\databases\neo4j:
+Nodes:
+  [Customer]:
+  C:\mm_work\data\import\customers.csv
+
+  [Account]:
+  C:\mm_work\data\import\accounts.csv
+
+  [Device]:
+  C:\mm_work\data\import\devices.csv
+
+Relationships:
+  OWNS:
+  C:\mm_work\data\import\owns.csv
+
+  USED_DEVICE:
+  C:\mm_work\data\import\used_device.csv
+
+  TRANSFER:
+  C:\mm_work\data\import\transfers.csv
+
+
+Available resources:
+  Total machine memory: 15.84GiB
+  Free machine memory: 1.220GiB
+  Max heap memory : 1.778GiB
+  Max worker threads: 8
+  Configured max memory: 576.5MiB
+  High parallel IO: true
+
+Cypher type normalization is enabled (disable with --normalize-types=false):
+  Property type of 'first_day' normalized from 'int' --> 'long' in C:\mm_work\data\import\used_device.csv
+  Property type of 'last_day' normalized from 'int' --> 'long' in C:\mm_work\data\import\used_device.csv
+  Property type of 'observations' normalized from 'int' --> 'long' in C:\mm_work\data\import\used_device.csv
+  Property type of 'amount_rwf' normalized from 'int' --> 'long' in C:\mm_work\data\import\transfers.csv
+WARNING: heap size 1.778GiB is unnecessarily large for completing this import.
+
+Import starting 2026-10-28 18:48:51.037+0200
+  Estimated number of nodes: 706.10 k
+  Estimated number of node properties: 1.41 M
+  Estimated number of relationships: 21.86 M
+  Estimated number of relationship properties: 64.84 M
+  Estimated disk space usage: 1.555GiB
+  Estimated required memory usage: 1022MiB
+
+(1/4) Node import 2026-10-28 18:48:51.071+0200
+  Estimated number of nodes: 706.10 k
+  Estimated disk space usage: 38.38MiB
+  Estimated required memory usage: 1022MiB
+.......... ........-. .......... .......... ..........   5% Γêå2s 618ms [2s 618ms] 
+.......... .......... .......... .......... ..........  10% Γêå1ms [2s 620ms] 
+.......... .......... .......... .......... ..........  15% Γêå4ms [2s 624ms] 
+.......... .......... .......... .......... ..........  20% Γêå230ms [2s 854ms] 
+.......... .......... .......... .......... ..........  25% Γêå4ms [2s 859ms] 
+.......... .......... .......... .......... ..........  30% Γêå130ms [2s 989ms] 
+.......... .......... .......... .......... ..........  35% Γêå1ms [2s 991ms] 
+.......... .......... .......... .......... ..........  40% Γêå0ms [2s 991ms] 
+.......... .......... .......... .......... ..........  45% Γêå0ms [2s 992ms] 
+.......... .......... .......... .......... ..........  50% Γêå0ms [2s 992ms] 
+.......... .......... .......... .......... ..........  55% Γêå0ms [2s 992ms] 
+.......... .......... .......... .......... ..........  60% Γêå0ms [2s 993ms] 
+.......... .......... .......... .......... ..........  65% Γêå0ms [2s 993ms] 
+.......... .......... .......... .......... ..........  70% Γêå0ms [2s 993ms] 
+.......... .......... .......... .......... ..........  75% Γêå0ms [2s 994ms] 
+.......... .......... .......... .......... ..........  80% Γêå0ms [2s 994ms] 
+.......... .......... .......... .......... ..........  85% Γêå0ms [2s 994ms] 
+.......... .......... .......... .......... ..........  90% Γêå0ms [2s 994ms] 
+.......... .......... .......... .......... ..........  95% Γêå0ms [2s 994ms] 
+.......... .......... .......... .......... .......... 100% Γêå0ms [2s 995ms] 
+Node import COMPLETED in 3s 12ms
+
+(2/4) Relationship import 2026-10-28 18:48:54.084+0200
+  Estimated number of relationships: 21.86 M
+  Estimated disk space usage: 1.517GiB
+  Estimated required memory usage: 1023MiB
+.......... .......... .......... .......... ..........   5% Γêå3s 584ms [3s 584ms] 
+.......... .......... .......... .......... ..........  10% Γêå896ms [4s 480ms] 
+.......... .......... .......... .......... ..........  15% Γêå843ms [5s 323ms] 
+.......... .......... .......... .......... ..........  20% Γêå1s 765ms [7s 88ms] 
+.......... .......... .......... .......... ..........  25% Γêå1s 29ms [8s 118ms] 
+.......... .......... .......... .......... ..........  30% Γêå851ms [8s 969ms] 
+.......... .......... .......... .......... ..........  35% Γêå1s 640ms [10s 610ms] 
+.......... .......... .......... .......... ..........  40% Γêå1s 294ms [11s 904ms] 
+.......... .......... .......... .......... ..........  45% Γêå1s 275ms [13s 179ms] 
+.......... .......... .......... .......... ..........  50% Γêå1s 198ms [14s 378ms] 
+.......... .......... .......... .......... ..........  55% Γêå1s 417ms [15s 795ms] 
+.......... .......... .......... .......... ..........  60% Γêå2s 409ms [18s 205ms] 
+.......... .......... .......... .......... ..........  65% Γêå1s 656ms [19s 861ms] 
+.......... .......... .......... .......... ..........  70% Γêå1s 15ms [20s 877ms] 
+.......... .......... .......... .......... ..........  75% Γêå1s 17ms [21s 894ms] 
+.......... .......... .......... .......... ..........  80% Γêå1s 450ms [23s 344ms] 
+.......... .......... .......... .......... ..........  85% Γêå1s 225ms [24s 570ms] 
+.......... .......... .......... .......... ..........  90% Γêå1s 425ms [25s 995ms] 
+.......... .......... .......... .......... ..........  95% Γêå988ms [26s 984ms] 
+.......... .......... .......... .......... .......... 100% Γêå0ms [26s 984ms] 
+Relationship import COMPLETED in 26s 984ms
+
+(3/4) Relationship linking 2026-10-28 18:49:21.073+0200
+  Estimated required memory usage: 1019MiB
+.......... .......... .......... .......... ..........   5% Γêå3s 469ms [3s 469ms] 
+.......... .......... .......... .......... ..........  10% Γêå2s 648ms [6s 118ms] 
+.......... .......... .......... .......... ..........  15% Γêå2s 490ms [8s 609ms] 
+.......... .......... .......... .......... .....-....  20% Γêå2s 127ms [10s 736ms] 
+...-...-.. -......... .......... .......... ..........  25% Γêå11s 366ms [22s 102ms] 
+.......... .......... .......... .......... ..........  30% Γêå1s 655ms [23s 758ms] 
+.......... .......... .......... .......... ..........  35% Γêå1s 32ms [24s 790ms] 
+.......... .......... .......... .......... ..........  40% Γêå1s 36ms [25s 827ms] 
+.......... .......... .......... .......... ..........  45% Γêå1s 12ms [26s 839ms] 
+.......... .......... .......... .......... ..........  50% Γêå817ms [27s 657ms] 
+.......... .......... .......... .......... ..........  55% Γêå815ms [28s 472ms] 
+.......... .......... .......... .......... ...-......  60% Γêå1s 45ms [29s 517ms] 
+.......... .......... .......... .......... ..........  65% Γêå1s 744ms [31s 262ms] 
+.......... .......... .......... .......... ..........  70% Γêå1s 22ms [32s 285ms] 
+.......... .......... .......... .......... ..........  75% Γêå812ms [33s 97ms] 
+.......... .......... .......... .......... ..........  80% Γêå807ms [33s 904ms] 
+.......... .......... .......... .......... ..........  85% Γêå609ms [34s 514ms] 
+.......... .......... .......... .......... ..........  90% Γêå823ms [35s 337ms] 
+.......... .......... .......... .......... ..........  95% Γêå605ms [35s 942ms] 
+.......... .......... .......... .......... .......... 100% Γêå402ms [36s 345ms] 
+Relationship linking COMPLETED in 36s 349ms
+
+(4/4) Post processing 2026-10-28 18:49:57.422+0200
+  Estimated required memory usage: 1012MiB
+-......... ......-... .....-.... -......... ..........   5% Γêå2s 680ms [2s 680ms] 
+.......... .......... .......... .......... ..........  10% Γêå421ms [3s 102ms] 
+.......... .......... .......... .......... ..........  15% Γêå500ms [3s 602ms] 
+.......... .......... .......... .......... ..........  20% Γêå204ms [3s 806ms] 
+.......... .......... .......... .......... ..........  25% Γêå204ms [4s 10ms] 
+.......... .......... .......... .......... ..........  30% Γêå203ms [4s 214ms] 
+.......... .......... .......... .......... ..........  35% Γêå200ms [4s 415ms] 
+.......... .......... .......... .......... ..........  40% Γêå0ms [4s 415ms] 
+.......... .......... .......... .......... ..........  45% Γêå204ms [4s 620ms] 
+.......... .......... .......... .......... ..........  50% Γêå204ms [4s 824ms] 
+.......... .......... .......... .......... ..........  55% Γêå207ms [5s 32ms] 
+.......... .......... .......... .......... ..........  60% Γêå217ms [5s 249ms] 
+.......... .......... .......... .......... ..........  65% Γêå216ms [5s 465ms] 
+.......... .......... .......... .......... ..........  70% Γêå203ms [5s 669ms] 
+.......... .......... .......... .......... ..........  75% Γêå222ms [5s 892ms] 
+.......... .......... .......... .......... ..........  80% Γêå213ms [6s 105ms] 
+.......... .......... .......... .......... ..........  85% Γêå230ms [6s 336ms] 
+.......... .......... .......... .......... ..........  90% Γêå210ms [6s 546ms] 
+.......... .......... .......... .......... ..........  95% Γêå0ms [6s 547ms] 
+.......... .......... .......... .......... .......... 100% Γêå0ms [6s 547ms] 
+Post processing COMPLETED in 6s 547ms
+
+
+IMPORT DONE in 1m 15s 279ms. 
+Imported:
+  704600 nodes
+  20536900 relationships
+  62275900 properties
+Peak memory usage: 1.014GiB
+Import finished in 84.4 s
+The abundant heap memory will leave less memory for off-heap importer caches. Suggested heap size is 1.001GiB

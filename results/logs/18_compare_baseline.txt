@@ -1,0 +1,86 @@
+case         PG rows Neo rows     PG ms    Neo ms  PG=Neo  ref  status
+Q1-A               1        1    2004.4   10710.8  True   True  OK
+Q1-B               1        1       2.3     236.0  True   True  OK
+Q1-C               1        1       1.9     253.7  True   True  OK
+Q1-D               1        1       1.6     177.4  True   True  OK
+Q1-E               1        1       1.7     178.4  True   True  OK
+Q1-F               1        1       2.0     207.3  True   True  OK
+Q2-month          30       30   13587.2   97149.5  True   True  OK
+Q3-A               4        4      11.4    1524.7  True   True  OK
+Q3-B               9        9      15.0     156.0  True   True  OK
+Q3-C               9        9       4.1     128.7  True   True  OK
+Q3-D               4        4      15.8     184.1  True   True  OK
+Q3-E               9        9       3.1      82.7  True   True  OK
+Q3-F               9        9       2.9      99.1  True   True  OK
+Q4-A-d4            2        2      43.6     715.6  True   True  OK
+Q4-A-d6            5        5      48.9     391.3  True   True  OK
+Q4-A-d8            5        5      43.6     302.0  True   True  OK
+Q4-A-d10           5        5      47.4     381.6  True   True  OK
+Q4-B-d4            5        5      36.1     190.2  True   True  OK
+Q4-B-d6            5        5      32.7     115.4  True   True  OK
+Q4-B-d8            5        5      24.0     101.7  True   True  OK
+Q4-B-d10           5        5      61.9     182.9  True   True  OK
+Q4-C-d4            5        5      86.3     238.9  True   True  OK
+Q4-C-d6            5        5     111.2     120.6  True   True  OK
+Q4-C-d8            5        5     191.2     291.4  True   True  OK
+Q4-C-d10           5        5     218.1     214.9  True   True  OK
+Q4-D-d4            3        3      20.0      79.2  True   True  OK
+Q4-D-d6            5        5      21.2     143.7  True   True  OK
+Q4-D-d8            5        5      22.6      83.2  True   True  OK
+Q4-D-d10           5        5      15.6      90.4  True   True  OK
+Q4-E-d4            5        5       7.6     102.5  True   True  OK
+Q4-E-d6            5        5       6.6     115.9  True   True  OK
+Q4-E-d8            5        5      19.5     117.9  True   True  OK
+Q4-E-d10           5        5      23.6     113.7  True   True  OK
+Q4-F-d4            5        5       2.6      82.3  True   True  OK
+Q4-F-d6            5        5       9.9      79.0  True   True  OK
+Q4-F-d8            5        5      51.4      89.5  True   True  OK
+Q4-F-d10           5        5     141.3     114.0  True   True  OK
+Q5-A               1        1      21.6   33898.4  True   True  OK
+Q5-B               1        1       3.5   30730.1  True   True  OK
+Q5-C               1        1      17.6   30908.9  True   True  OK
+Q5-D               0        0      17.4     111.1  True   True  OK
+Q5-E               0        0      17.0      81.4  True   True  OK
+Q5-F               0        0       2.8      98.7  True   True  OK
+Q6-A               1        1      18.1     608.1  True   True  OK
+Q6-B               0        0      17.4     172.7  True   True  OK
+Q6-C               1        1       4.6     123.5  True   True  OK
+Q6-D               0        0       1.3     121.4  True   True  OK
+Q6-E               0        0       1.9      78.4  True   True  OK
+Q6-F               0        0       1.7      83.0  True   True  OK
+Q7-A-b4            1        1    2720.9     353.4  True   True  OK
+Q7-A-b6            1        1  127774.1     276.2  True   True  OK
+Q7-B-b4            1        1     970.2     175.2  True   True  OK
+Q7-B-b6            1        1   81719.9     183.1  True   True  OK
+Q7-C-b4            1        1     804.3     207.4  True   True  OK
+Q7-C-b6            1        1   68438.3     172.8  True   True  OK
+Q7-D-b4            1        1     927.1     206.7  True   True  OK
+Q7-D-b6            1        1   79915.1     192.0  True   True  OK
+Q7-E-b4            1        1     942.8     183.4  True   True  OK
+Q7-E-b6            1        1  189779.3     184.4  True   True  OK
+Q7-F-b4            1        1    1028.7     179.3  True   True  OK
+Q7-F-b6            1        1   87627.9     290.2  True   True  OK
+
+Q7 supporting paths (Neo4j path verified against PostgreSQL rows)
+Q7-A-b4: length 3 accounts [998, 8917, 16836, 24755] transfers [20000001, 20000002, 20000003] -> VALID
+Q7-A-b6: length 3 accounts [998, 8917, 16836, 24755] transfers [20000001, 20000002, 20000003] -> VALID
+Q7-B-b4: no route within 4
+Q7-B-b6: length 5 accounts [147228, 147906, 147310, 148101, 178904, 186823] transfers [11540891, 15207140, 18927851, 16500879, 20000096] -> VALID
+Q7-C-b4: no route within 4
+Q7-C-b6: length 5 accounts [206978, 214897, 222816, 230735, 238654, 6573] transfers [20000229, 20000230, 20000231, 20000232, 20000233] -> VALID
+Q7-D-b4: length 3 accounts [237998, 5917, 13836, 21755] transfers [20001651, 20001652, 20001653] -> VALID
+Q7-D-b6: length 3 accounts [237998, 5917, 13836, 21755] transfers [20001651, 20001652, 20001653] -> VALID
+Q7-E-b4: no route within 4
+Q7-E-b6: length 5 accounts [144228, 152147, 160066, 167985, 175904, 183823] transfers [20001742, 20001743, 20001744, 20001745, 20001746] -> VALID
+Q7-F-b4: no route within 4
+Q7-F-b6: length 5 accounts [203978, 211897, 219816, 227735, 235654, 3573] transfers [20001879, 20001880, 20001881, 20001882, 20001883] -> VALID
+
+Q4 supporting path from 998 to 236836: [(['Account 998', 'Device 228001', 'Account 16836', 'Customer 16836', 'Account 236836'], ['USED_DEVICE', 'USED_DEVICE', 'OWNS', 'OWNS'], 4)]
+Traceback (most recent call last):
+  File "C:\Users\Christian\OneDrive\Desktop\AUCA_Masters\Big_Data_Analytics\Big_Data_Analytics_Project2_Group11\compare.py", line 101, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\Christian\OneDrive\Desktop\AUCA_Masters\Big_Data_Analytics\Big_Data_Analytics_Project2_Group11\compare.py", line 90, in main
+    paths["Q4-A-example"] = [list(x) for x in p[0]] if p else None
+                             ~~~~^^^
+TypeError: 'int' object is not iterable

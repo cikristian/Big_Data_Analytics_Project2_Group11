@@ -1,0 +1,55 @@
+Timing is on.
+    step     |            at_cat             
+-------------+-------------------------------
+ SETUP START | 2026-10-28 18:43:41.059256+02
+(1 row)
+
+Time: 0.817 ms
+ALTER TABLE
+Time: 125.736 ms
+ALTER TABLE
+Time: 118.114 ms
+ALTER TABLE
+Time: 1036.036 ms (00:01.036)
+ALTER TABLE
+Time: 381.443 ms
+ALTER TABLE
+Time: 30822.769 ms (00:30.823)
+ALTER TABLE
+Time: 197.503 ms
+ALTER TABLE
+Time: 130.308 ms
+ALTER TABLE
+Time: 154.564 ms
+ALTER TABLE
+Time: 6349.087 ms (00:06.349)
+ALTER TABLE
+Time: 5429.777 ms (00:05.430)
+ALTER TABLE
+Time: 1774.580 ms (00:01.775)
+ALTER TABLE
+Time: 26.243 ms
+ALTER TABLE
+Time: 38.643 ms
+ALTER TABLE
+Time: 32.974 ms
+ALTER TABLE
+Time: 26.986 ms
+CREATE INDEX
+Time: 157.433 ms
+CREATE INDEX
+Time: 237.804 ms
+CREATE INDEX
+Time: 29727.808 ms (00:29.728)
+CREATE INDEX
+Time: 31841.151 ms (00:31.841)
+CREATE INDEX
+Time: 3966.592 ms (00:03.967)
+VACUUM
+Time: 11882.902 ms (00:11.883)
+   step    |            at_cat             
+-----------+-------------------------------
+ SETUP END | 2026-10-28 18:45:45.519968+02
+(1 row)
+
+Time: 0.229 ms

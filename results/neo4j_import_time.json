@@ -1,0 +1,18 @@
+{
+  "import_seconds": 84.43,
+  "command": [
+    "C:\\neo4j\\neo4j-community-2026.09.0\\bin\\neo4j-admin.bat",
+    "database",
+    "import",
+    "full",
+    "neo4j",
+    "--overwrite-destination=true",
+    "--id-type=integer",
+    "--nodes=Customer=C:\\mm_work\\data\\import\\customers.csv",
+    "--nodes=Account=C:\\mm_work\\data\\import\\accounts.csv",
+    "--nodes=Device=C:\\mm_work\\data\\import\\devices.csv",
+    "--relationships=OWNS=C:\\mm_work\\data\\import\\owns.csv",
+    "--relationships=USED_DEVICE=C:\\mm_work\\data\\import\\used_device.csv",
+    "--relationships=TRANSFER=C:\\mm_work\\data\\import\\transfers.csv"
+  ]
+}

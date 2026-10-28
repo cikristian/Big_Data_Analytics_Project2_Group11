@@ -1,0 +1,104 @@
+                                           Table "public.customers"
+   Column    |  Type   | Collation | Nullable | Default | Storage  | Compression | Stats target | Description 
+-------------+---------+-----------+----------+---------+----------+-------------+--------------+-------------
+ customer_id | integer |           | not null |         | plain    |             |              | 
+ region      | text    |           | not null |         | extended |             |              | 
+Indexes:
+    "customers_pk" PRIMARY KEY, btree (customer_id)
+Referenced by:
+    TABLE "accounts" CONSTRAINT "accounts_customer_fk" FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+Not-null constraints:
+    "customers_customer_id_not_null" NOT NULL "customer_id"
+    "customers_region_not_null" NOT NULL "region"
+Access method: heap
+
+                                           Table "public.accounts"
+   Column    |  Type   | Collation | Nullable | Default | Storage  | Compression | Stats target | Description 
+-------------+---------+-----------+----------+---------+----------+-------------+--------------+-------------
+ account_id  | integer |           | not null |         | plain    |             |              | 
+ customer_id | integer |           | not null |         | plain    |             |              | 
+ role        | text    |           | not null |         | extended |             |              | 
+Indexes:
+    "accounts_pk" PRIMARY KEY, btree (account_id)
+    "accounts_customer_idx" btree (customer_id, account_id)
+Check constraints:
+    "accounts_role_valid" CHECK (role = ANY (ARRAY['person'::text, 'merchant'::text, 'agent'::text]))
+Foreign-key constraints:
+    "accounts_customer_fk" FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+Referenced by:
+    TABLE "account_devices" CONSTRAINT "ad_account_fk" FOREIGN KEY (account_id) REFERENCES accounts(account_id)
+    TABLE "transfers" CONSTRAINT "transfers_receiver_fk" FOREIGN KEY (receiver_id) REFERENCES accounts(account_id)
+    TABLE "transfers" CONSTRAINT "transfers_sender_fk" FOREIGN KEY (sender_id) REFERENCES accounts(account_id)
+Not-null constraints:
+    "accounts_account_id_not_null" NOT NULL "account_id"
+    "accounts_customer_id_not_null" NOT NULL "customer_id"
+    "accounts_role_not_null" NOT NULL "role"
+Access method: heap
+
+                                            Table "public.devices"
+   Column    |  Type   | Collation | Nullable | Default | Storage  | Compression | Stats target | Description 
+-------------+---------+-----------+----------+---------+----------+-------------+--------------+-------------
+ device_id   | integer |           | not null |         | plain    |             |              | 
+ access_type | text    |           | not null |         | extended |             |              | 
+Indexes:
+    "devices_pk" PRIMARY KEY, btree (device_id)
+Check constraints:
+    "devices_access_valid" CHECK (access_type = ANY (ARRAY['handset'::text, 'public_terminal'::text]))
+Referenced by:
+    TABLE "account_devices" CONSTRAINT "ad_device_fk" FOREIGN KEY (device_id) REFERENCES devices(device_id)
+Not-null constraints:
+    "devices_device_id_not_null" NOT NULL "device_id"
+    "devices_access_type_not_null" NOT NULL "access_type"
+Access method: heap
+
+                                        Table "public.account_devices"
+    Column    |   Type   | Collation | Nullable | Default | Storage | Compression | Stats target | Description 
+--------------+----------+-----------+----------+---------+---------+-------------+--------------+-------------
+ account_id   | integer  |           | not null |         | plain   |             |              | 
+ device_id    | integer  |           | not null |         | plain   |             |              | 
+ first_day    | smallint |           | not null |         | plain   |             |              | 
+ last_day     | smallint |           | not null |         | plain   |             |              | 
+ observations | integer  |           | not null |         | plain   |             |              | 
+Indexes:
+    "account_devices_pk" PRIMARY KEY, btree (account_id, device_id)
+    "account_devices_dev_idx" btree (device_id, account_id)
+Check constraints:
+    "ad_day_range" CHECK (0 <= first_day AND first_day <= last_day AND last_day <= 29)
+    "ad_observations_pos" CHECK (observations > 0)
+Foreign-key constraints:
+    "ad_account_fk" FOREIGN KEY (account_id) REFERENCES accounts(account_id)
+    "ad_device_fk" FOREIGN KEY (device_id) REFERENCES devices(device_id)
+Not-null constraints:
+    "account_devices_account_id_not_null" NOT NULL "account_id"
+    "account_devices_device_id_not_null" NOT NULL "device_id"
+    "account_devices_first_day_not_null" NOT NULL "first_day"
+    "account_devices_last_day_not_null" NOT NULL "last_day"
+    "account_devices_observations_not_null" NOT NULL "observations"
+Access method: heap
+
+                                          Table "public.transfers"
+   Column    |  Type   | Collation | Nullable | Default | Storage | Compression | Stats target | Description 
+-------------+---------+-----------+----------+---------+---------+-------------+--------------+-------------
+ transfer_id | bigint  |           | not null |         | plain   |             |              | 
+ sender_id   | integer |           | not null |         | plain   |             |              | 
+ receiver_id | integer |           | not null |         | plain   |             |              | 
+ occurred_at | bigint  |           | not null |         | plain   |             |              | 
+ amount_rwf  | integer |           | not null |         | plain   |             |              | 
+Indexes:
+    "transfers_pk" PRIMARY KEY, btree (transfer_id)
+    "transfers_receiver_idx" btree (receiver_id, occurred_at) INCLUDE (sender_id, amount_rwf, transfer_id)
+    "transfers_sender_idx" btree (sender_id, occurred_at) INCLUDE (receiver_id, amount_rwf, transfer_id)
+    "transfers_time_brin" brin (occurred_at)
+Check constraints:
+    "transfers_amount_pos" CHECK (amount_rwf > 0)
+Foreign-key constraints:
+    "transfers_receiver_fk" FOREIGN KEY (receiver_id) REFERENCES accounts(account_id)
+    "transfers_sender_fk" FOREIGN KEY (sender_id) REFERENCES accounts(account_id)
+Not-null constraints:
+    "transfers_transfer_id_not_null" NOT NULL "transfer_id"
+    "transfers_sender_id_not_null" NOT NULL "sender_id"
+    "transfers_receiver_id_not_null" NOT NULL "receiver_id"
+    "transfers_occurred_at_not_null" NOT NULL "occurred_at"
+    "transfers_amount_rwf_not_null" NOT NULL "amount_rwf"
+Access method: heap
+

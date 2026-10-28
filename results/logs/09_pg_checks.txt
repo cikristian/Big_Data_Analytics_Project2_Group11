@@ -1,0 +1,82 @@
+   TimeZone    
+---------------
+ Africa/Kigali
+
+   table_name    |   rows   | expected 
+-----------------+----------+----------
+ customers       |   228000 |   228000
+ accounts        |   248000 |   248000
+ devices         |   228600 |   228600
+ account_devices |   285600 |   285600
+ transfers       | 20003300 | 20003300
+
+ transfer_count |  earliest  |      earliest_cat      |   latest   |       latest_cat       | sum_amount_rwf 
+----------------+------------+------------------------+------------+------------------------+----------------
+       20003300 | 1788235200 | 2026-09-01 06:00:00+02 | 1790798399 | 2026-09-30 21:59:59+02 |   231482327870
+
+   role   | count  
+----------+--------
+ agent    |   2000
+ merchant |   6000
+ person   | 240000
+
+   table_name    |                conname                | contype | convalidated 
+-----------------+---------------------------------------+---------+--------------
+ customers       | customers_customer_id_not_null        | n       | t
+ customers       | customers_pk                          | p       | t
+ customers       | customers_region_not_null             | n       | t
+ accounts        | accounts_account_id_not_null          | n       | t
+ accounts        | accounts_customer_fk                  | f       | t
+ accounts        | accounts_customer_id_not_null         | n       | t
+ accounts        | accounts_pk                           | p       | t
+ accounts        | accounts_role_not_null                | n       | t
+ accounts        | accounts_role_valid                   | c       | t
+ devices         | devices_access_type_not_null          | n       | t
+ devices         | devices_access_valid                  | c       | t
+ devices         | devices_device_id_not_null            | n       | t
+ devices         | devices_pk                            | p       | t
+ account_devices | account_devices_account_id_not_null   | n       | t
+ account_devices | account_devices_device_id_not_null    | n       | t
+ account_devices | account_devices_first_day_not_null    | n       | t
+ account_devices | account_devices_last_day_not_null     | n       | t
+ account_devices | account_devices_observations_not_null | n       | t
+ account_devices | account_devices_pk                    | p       | t
+ account_devices | ad_account_fk                         | f       | t
+ account_devices | ad_day_range                          | c       | t
+ account_devices | ad_device_fk                          | f       | t
+ account_devices | ad_observations_pos                   | c       | t
+ transfers       | transfers_amount_pos                  | c       | t
+ transfers       | transfers_amount_rwf_not_null         | n       | t
+ transfers       | transfers_occurred_at_not_null        | n       | t
+ transfers       | transfers_pk                          | p       | t
+ transfers       | transfers_receiver_fk                 | f       | t
+ transfers       | transfers_receiver_id_not_null        | n       | t
+ transfers       | transfers_sender_fk                   | f       | t
+ transfers       | transfers_sender_id_not_null          | n       | t
+ transfers       | transfers_transfer_id_not_null        | n       | t
+
+    tablename    |        indexname        |                                                                  indexdef                                                                   
+-----------------+-------------------------+---------------------------------------------------------------------------------------------------------------------------------------------
+ account_devices | account_devices_dev_idx | CREATE INDEX account_devices_dev_idx ON public.account_devices USING btree (device_id, account_id)
+ account_devices | account_devices_pk      | CREATE UNIQUE INDEX account_devices_pk ON public.account_devices USING btree (account_id, device_id)
+ accounts        | accounts_customer_idx   | CREATE INDEX accounts_customer_idx ON public.accounts USING btree (customer_id, account_id)
+ accounts        | accounts_pk             | CREATE UNIQUE INDEX accounts_pk ON public.accounts USING btree (account_id)
+ customers       | customers_pk            | CREATE UNIQUE INDEX customers_pk ON public.customers USING btree (customer_id)
+ devices         | devices_pk              | CREATE UNIQUE INDEX devices_pk ON public.devices USING btree (device_id)
+ transfers       | transfers_pk            | CREATE UNIQUE INDEX transfers_pk ON public.transfers USING btree (transfer_id)
+ transfers       | transfers_receiver_idx  | CREATE INDEX transfers_receiver_idx ON public.transfers USING btree (receiver_id, occurred_at) INCLUDE (sender_id, amount_rwf, transfer_id)
+ transfers       | transfers_sender_idx    | CREATE INDEX transfers_sender_idx ON public.transfers USING btree (sender_id, occurred_at) INCLUDE (receiver_id, amount_rwf, transfer_id)
+ transfers       | transfers_time_brin     | CREATE INDEX transfers_time_brin ON public.transfers USING brin (occurred_at)
+
+   table_name    | data_gb | index_gb 
+-----------------+---------+----------
+ account_devices |  0.0127 |   0.0129
+ accounts        |  0.0111 |   0.0112
+ customers       |  0.0101 |   0.0051
+ devices         |  0.0102 |   0.0052
+ transfers       |  1.2057 |   2.4335
+
+ database_gb 
+-------------
+      3.7262
+
